@@ -2,13 +2,17 @@ package igu.compras.clientes;
 
 import data.CienteData;
 import entities.Cliente;
+import igu.ChangePanel;
 import igu.util.tables.ExportarExcel;
+import java.awt.Color;
 
 import java.io.IOException;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.LineBorder;
 import util.ErrorLogger;
+import util.MsgPanel;
 
 /**
  *
@@ -31,6 +35,7 @@ public class ClientesPanel extends javax.swing.JPanel {
         nombres.requestFocus();
         nombres.setText("");
         infoadic.setText("");
+        MsgPanel.msg("");
     }
 
     private void paintTable(ClientesTableModel tableModel) {
@@ -47,9 +52,10 @@ public class ClientesPanel extends javax.swing.JPanel {
             nombres.setText(d.getNombres());
             infoadic.setText(d.getInfoadic());
             System.out.printf("getId:%d getSelectedRow:%d \n", d.getId(), table.getSelectedRow());
-           
+
             guardarButton.setText("MODIFICAR");
             guardarButton.setToolTipText("MODIFICAR");
+            MsgPanel.msg("");
         }
 
     }
@@ -80,6 +86,7 @@ public class ClientesPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         infoadic = new javax.swing.JTextArea();
+        msgPanel1 = new util.MsgPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -186,6 +193,11 @@ public class ClientesPanel extends javax.swing.JPanel {
         jLabel2.setText("Nombres:");
 
         nombres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        nombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nombresKeyReleased(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Info adic:");
@@ -213,11 +225,13 @@ public class ClientesPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(msgPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addComponent(msgPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nombres, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +239,7 @@ public class ClientesPanel extends javax.swing.JPanel {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -407,8 +421,10 @@ public class ClientesPanel extends javax.swing.JPanel {
 
     private void guardarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarButtonActionPerformed
         // TODO add your handling code here:
-        if (this.nombres.getText().equals("")) {
-            System.err.println("Nombre es requerido");
+        if (nombres.getText().trim().isEmpty()) {
+            nombres.requestFocus();
+            nombres.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+            MsgPanel.msg("Nombre es requerido", true);
         } else {
             Cliente s = new Cliente();
             s.setNombres(nombres.getText());
@@ -508,6 +524,16 @@ public class ClientesPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_theButton4ActionPerformed
 
+    private void nombresKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombresKeyReleased
+        // TODO add your handling code here:
+        if (!nombres.getText().trim().isEmpty()) { //reset
+            nombres.setBorder(new LineBorder(new java.awt.Color(0, 0, 0), 1));
+            MsgPanel.msg("");
+        } else {
+            nombres.setBorder(new LineBorder(new java.awt.Color(255, 0, 0), 3));
+            MsgPanel.msg("Nombre es requerido", true);
+        }
+    }//GEN-LAST:event_nombresKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscarField;
@@ -533,6 +559,7 @@ public class ClientesPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private util.MsgPanel msgPanel1;
     private javax.swing.JTextField nombres;
     private igu.util.buttons.TheButton nuevoButton;
     private javax.swing.JTable table;
