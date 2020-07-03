@@ -7,6 +7,7 @@ package igu.compras;
 
 import igu.ChangePanel;
 import igu.compras.clientes.ClientesPanel;
+import igu.compras.clientes.ProductosPanel;
 import igu.compras.panels.ComprasPanel;
 import java.awt.Color;
 
@@ -152,7 +153,7 @@ public class ComprasMainPanel extends javax.swing.JPanel {
 
     private void clientesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesButtonActionPerformed
         // TODO add your handling code here:
-        new ChangePanel(workPanel, new ClientesPanel());
+        new ChangePanel(workPanel, new ProductosPanel());
         /*  if (new Validate().comprobar()) {
 
         } else {
