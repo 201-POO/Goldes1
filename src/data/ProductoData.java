@@ -23,7 +23,7 @@ public class ProductoData {
 
     static Connection cn = Conn.connectSQLite();
     static PreparedStatement ps;
-    static ErrorLogger log = new ErrorLogger(CienteData.class.getName());
+    static ErrorLogger log = new ErrorLogger(ProductoData.class.getName());
 
     static Date dt = new Date();
     static SimpleDateFormat sdf = new SimpleDateFormat(SQLiteConfig.DEFAULT_DATE_STRING_FORMAT);
@@ -112,7 +112,7 @@ public class ProductoData {
             sql = "SELECT * FROM producto WHERE (id LIKE'" + filter + "%' OR "
                     + "nombres LIKE'" + filter + "%' OR cod LIKE'" + filter + "%' OR "
                     + "id LIKE'" + filter + "%') "
-                    + "ORDER BY nombres";
+                    + "ORDER BY id";
         }
         try {
             Statement st = cn.createStatement();

@@ -38,13 +38,14 @@ public class ComprasMainPanel extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         clientesButton = new igu.util.buttons.TheButton();
         comprasButton = new igu.util.buttons.TheButton();
+        clientesButton1 = new igu.util.buttons.TheButton();
         workPanel = new javax.swing.JPanel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         clientesButton.setBackground(new java.awt.Color(239, 238, 244));
         clientesButton.setForeground(new java.awt.Color(128, 128, 131));
-        clientesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/igu/imgs/icons/user_blue_32.png"))); // NOI18N
+        clientesButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/igu/imgs/icons/feeedback.png"))); // NOI18N
         clientesButton.setText("CLIENTES");
         clientesButton.setColorHover(new java.awt.Color(204, 204, 204));
         clientesButton.setColorNormal(new java.awt.Color(239, 238, 244));
@@ -86,6 +87,28 @@ public class ComprasMainPanel extends javax.swing.JPanel {
             }
         });
 
+        clientesButton1.setBackground(new java.awt.Color(239, 238, 244));
+        clientesButton1.setForeground(new java.awt.Color(128, 128, 131));
+        clientesButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/igu/imgs/icons/feeedback.png"))); // NOI18N
+        clientesButton1.setText("CLIENTES");
+        clientesButton1.setColorHover(new java.awt.Color(204, 204, 204));
+        clientesButton1.setColorNormal(new java.awt.Color(239, 238, 244));
+        clientesButton1.setColorPressed(new java.awt.Color(204, 204, 204));
+        clientesButton1.setColorTextHover(new java.awt.Color(128, 128, 131));
+        clientesButton1.setColorTextNormal(new java.awt.Color(128, 128, 131));
+        clientesButton1.setColorTextPressed(new java.awt.Color(128, 128, 131));
+        clientesButton1.setFocusable(false);
+        clientesButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                clientesButton1MousePressed(evt);
+            }
+        });
+        clientesButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientesButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -95,16 +118,18 @@ public class ComprasMainPanel extends javax.swing.JPanel {
                 .addComponent(comprasButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(clientesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(550, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(clientesButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(11, 11, 11)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(clientesButton, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                    .addComponent(comprasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12))
+                    .addComponent(clientesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(comprasButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clientesButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)))
         );
 
         workPanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,8 +146,8 @@ public class ComprasMainPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(workPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(workPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -183,9 +208,18 @@ public class ComprasMainPanel extends javax.swing.JPanel {
         this.clientesButton.setSelected(false);
     }//GEN-LAST:event_comprasButtonMousePressed
 
+    private void clientesButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesButton1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clientesButton1MousePressed
+
+    private void clientesButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientesButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clientesButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private igu.util.buttons.TheButton clientesButton;
+    private igu.util.buttons.TheButton clientesButton1;
     private igu.util.buttons.TheButton comprasButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

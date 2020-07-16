@@ -7,6 +7,15 @@ CREATE TABLE IF NOT EXISTS producto ( -- solo para ejercicio
     date_created datetime default current_timestamp
 );
 
+CREATE TABLE IF NOT EXISTS lote ( -- solo para examen
+	id			INTEGER PRIMARY KEY AUTOINCREMENT,
+	numero		TEXT	NOT NULL,
+    direccion  		TEXT	NULL,
+    valor_venta		REAL	NULL,
+    fecha_venta   datetime NULL,
+    date_created datetime default current_timestamp
+);
+
 
 CREATE TABLE IF NOT EXISTS user (
 	id		INTEGER PRIMARY KEY AUTOINCREMENT,

@@ -7,6 +7,7 @@ import java.awt.Color;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -22,7 +23,6 @@ import util.MsgPanel;
 public class ProductosPanel extends javax.swing.JPanel {
 
     ProductosTableModel prodTableModel = new ProductosTableModel();
-
 
     public ProductosPanel() {
         initComponents();
@@ -53,7 +53,7 @@ public class ProductosPanel extends javax.swing.JPanel {
             Producto d = ProductoData.getByPId(filax.getId());
             nombres.setText(d.getNombres());
             cod.setText(d.getCod());
-            precio.setText(d.getPrecio()+"");
+            precio.setText(d.getPrecio() + "");
             fecha_ven.setDate(d.getFecha_ven());
             System.out.printf("getId:%d getSelectedRow:%d \n", d.getId(), table.getSelectedRow());
 
@@ -215,7 +215,7 @@ public class ProductosPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Fecha Venc:");
 
-        precio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        precio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#,###.00"))));
 
         fecha_ven.setDateFormatString("dd/MM/yyyy");
 
@@ -456,9 +456,15 @@ public class ProductosPanel extends javax.swing.JPanel {
             Producto s = new Producto();
             s.setNombres(nombres.getText());
             s.setCod(cod.getText());
+            if (precio.getText().equals("")) {
+                precio.setText("0");
+            }
             s.setPrecio(Double.parseDouble(precio.getText().replaceAll(",", "")));
+            if (fecha_ven.getDate() == null) {
+                fecha_ven.setDate(new Date());
+            }
             s.setFecha_ven(fecha_ven.getDate());
-            
+
             if (table.getSelectedRow() != -1) {// ha seleccionado, update
                 try {
                     Producto fila = (Producto) prodTableModel.getRow(table.getSelectedRow());
